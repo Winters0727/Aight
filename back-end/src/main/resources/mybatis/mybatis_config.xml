@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration  
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+		<setting name="jdbcTypeForNull" value="NULL" />
+	</settings>
+	<typeAliases>
+		<typeAlias type="com.ssafy.ai.model.dto.Articles"
+			alias="articles" />
+		<typeAlias type="com.ssafy.ai.model.dto.Comments"
+			alias="comments" />
+		<typeAlias type="com.ssafy.ai.model.dto.InterviewResult"
+			alias="interviewresult" />
+		<typeAlias type="com.ssafy.ai.model.dto.User" alias="user" />
+		<typeAlias type="com.ssafy.ai.model.dto.UserAuth"
+			alias="userauth" />
+		<typeAlias type="com.ssafy.ai.model.dto.Videos"
+			alias="videos" />
+
+	</typeAliases>
+
+	<mappers>
+		<mapper resource="mybatis/mapper/userMapper.xml" />
+		<mapper resource="mybatis/mapper/userauthMapper.xml" />
+		<mapper resource="mybatis/mapper/commentsMapper.xml" />
+		<mapper resource="mybatis/mapper/interviewresultMapper.xml" />
+		<mapper resource="mybatis/mapper/videosMapper.xml" />
+		<mapper resource="mybatis/mapper/articlesMapper.xml" />
+
+
+	</mappers>
+
+</configuration>

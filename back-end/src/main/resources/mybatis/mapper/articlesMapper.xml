@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.api.Articles">
+
+
+	<select id="selectAll" resultType="articles">
+		select * from Articles
+	</select>
+
+	<select id="select" parameterType="int"
+		resultType="articles">
+		select * from Articles
+		where article_pk = #{article_pk}
+	</select>
+
+	<insert id="insert" parameterType="articles">
+		insert into
+		Articles(user_pk,title,content, writer, view, file,
+		create_date,
+		change_date)
+		values(#{user_pk},#{title},#{content}, #{writer},
+		#{view},
+		#{file}, now(), now())
+	</insert>
+
+	<delete id="delete" parameterType="int">
+		delete from Articles
+		where
+		article_pk =
+		#{article_pk}
+	</delete>
+
+
+	<update id="update" parameterType="articles">
+		update Articles set
+		user_pk =
+		#{user_pk},
+		title = #{title},
+		content = #{content},
+		writer = #{writer},
+		view = #{view},
+		file = #{file},
+		create_date = #{create_date},
+		change_date = now()
+		where article_pk=#{article_pk}
+	</update>
+
+</mapper>

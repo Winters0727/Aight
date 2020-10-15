@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.api.User">
+
+
+	<select id="selectAll" resultType="user">
+		select * from User
+	</select>
+
+	<select id="select" parameterType="int" resultType="user">
+		select *
+		from User
+		where user_pk = #{user_pk}
+	</select>
+
+	<insert id="insert" parameterType="user">
+		insert into
+		User(uid,password, nickname, username, is_admin, is_activated,
+		auth_date, gender, age)
+		values(#{uid},#{password},
+		#{nickname}, #{username},
+		#{is_admin}, #{is_activated}, now(),
+		#{gender}, #{age})
+	</insert>
+
+	<delete id="delete" parameterType="int">
+		delete from User
+		where
+		user_pk =
+		#{user_pk}
+	</delete>
+
+
+	<update id="update" parameterType="user">
+		update User set
+		uid =
+		#{uid},
+		password = #{password},
+		nickname = #{nickname},
+		username = #{username},
+		is_admin = #{is_admin},
+		is_activated = #{is_activated},
+		gender = #{gender},
+		age = #{age}
+		where user_pk=#{user_pk}
+	</update>
+	
+	<select id="selectByUid" parameterType="String" resultType="user">
+		select user_pk, uid, password, nickname, username, is_admin, is_activated, auth_date, gender, age  from User
+		where uid = #{uid}
+	</select>
+	
+	<select id="selectByNickname" parameterType="String" resultType="user">
+		select * from User
+		where nickname =#{nickname}
+	</select>
+	
+	<select id="checkEmail" parameterType="String" resultType="String">
+      select uid from user
+      where uid =#{uid}
+    </select>
+	
+
+</mapper>

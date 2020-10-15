@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.api.InterviewResult">
+
+	<select id="selectAll" resultType="interviewresult">
+		select * from InterviewResult
+	</select>
+
+	<select id="select" parameterType="int"
+		resultType="interviewresult">
+		select *
+		from InterviewResult
+		where ir_id = #{ir_id}
+	</select>
+	
+	<select id="selectByUsername" parameterType="String" resultType="interviewresult">
+		select * 
+		from InterviewResult
+		where username = #{username}
+	</select>
+
+	<insert id="insert" parameterType="interviewresult">
+		insert into
+		InterviewResult(user_pk, username, image_score, image_score_list,
+		voice_score, silent_interval,
+		graph_image_url, feedback, video_length, is_live, filename, test_date)
+		values(#{user_pk},#{username},
+		#{image_score}, #{image_score_list},
+		#{voice_score}, #{silent_interval}, #{graph_image_url},
+		#{feedback},
+		#{video_length}, #{is_live}, #{filename}, now())
+	</insert>
+
+	<delete id="delete" parameterType="int">
+		delete from InterviewResult
+		where
+		ir_id =
+		#{ir_id}
+	</delete>
+
+
+	<update id="update" parameterType="interviewresult">
+		update InterviewResult set
+		user_pk =
+		#{user_pk},
+		username = #{username},
+		image_score =
+		#{image_score},
+		image_score_list = #{image_score_list},
+		voice_score =
+		#{voice_score},
+		silent_interval = #{silent_interval},
+		graph_image_url =
+		#{graph_image_url},
+		feedback = #{feedback},
+		video_length =
+		#{video_length},
+		is_live = #{is_live},
+		filename = #{filename},
+		test_date
+		= now()
+		where ir_id=#{ir_id}
+	</update>
+
+</mapper>

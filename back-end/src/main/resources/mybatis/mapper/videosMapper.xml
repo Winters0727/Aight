@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.api.Videos">
+
+
+	<select id="selectAll" resultType="videos">
+		select * from Videos
+	</select>
+
+	<select id="select" parameterType="int" resultType="videos">
+		select *
+		from Videos
+		where video_pk = #{video_pk}
+	</select>
+
+	<insert id="insert" parameterType="videos">
+		insert into
+		Videos(user_pk, filename, create_date, video_length, video_url)
+		values(#{user_pk},#{filename},
+		now(), #{video_length},
+		#{video_url})
+	</insert>
+
+	<delete id="delete" parameterType="int">
+		delete from Videos
+		where
+		video_pk =
+		#{video_pk}
+	</delete>
+
+
+	<update id="update" parameterType="videos">
+		update Videos set
+		user_pk =
+		#{user_pk},
+		filename = #{filename},
+		video_length = #{video_length},
+		video_url = #{video_url}
+		where video_pk=#{video_pk}
+	</update>
+
+</mapper>

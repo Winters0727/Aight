@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.api.UserAuth">
+
+
+	<select id="selectAll" resultType="userauth">
+		select * from UserAuth
+	</select>
+
+	<select id="select" parameterType="int"
+		resultType="userauth">
+		select *
+		from UserAuth
+		where user_auth_pk = #{user_auth_pk}
+	</select>
+
+	<insert id="insert" parameterType="userauth">
+		insert into
+		UserAuth(user_auth_id , token, create_date, expire_date)
+		values(#{user_auth_id},#{token}, now(),
+		date_add(now(), interval 7
+		day))
+	</insert>
+
+	<delete id="delete" parameterType="int">
+		delete from UserAuth
+		where
+		user_auth_pk =
+		#{user_auth_pk}
+	</delete>
+
+
+	<update id="update" parameterType="userauth">
+		update userauth set
+		user_auth_id =
+		#{user_auth_id},
+		token = #{token},
+		expire_date =
+		#{expire_date}
+		where user_pk=#{user_pk}
+	</update>
+
+</mapper>
